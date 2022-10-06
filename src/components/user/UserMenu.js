@@ -2,7 +2,7 @@ import React from 'react';
 import { useState } from 'react';
 import { Dashboard, Logout, Settings } from '@mui/icons-material';
 import { ListItemIcon, Menu, MenuItem } from '@mui/material';
-import { useValue } from '../context/ContextProvider';
+import { useValue } from '../../context/ContextProvider';
 
 
 const UserMenu = ({ anchorUserMenu, setAnchorUserMenu }) => {
@@ -12,7 +12,6 @@ const UserMenu = ({ anchorUserMenu, setAnchorUserMenu }) => {
     setAnchorUserMenu(null);
   };
 
-
   return (
     
       <Menu
@@ -21,7 +20,6 @@ const UserMenu = ({ anchorUserMenu, setAnchorUserMenu }) => {
         onClose={handleCloseUserMenu}
         onClick={handleCloseUserMenu}
       >
-        
           <MenuItem>
             <ListItemIcon>
               <Settings fontSize="small" />

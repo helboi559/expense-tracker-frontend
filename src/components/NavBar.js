@@ -13,6 +13,7 @@ import {
 import { useValue } from '../context/ContextProvider'
 import UserIcons from './user/UserIcons'
 import photoURL from "../rattle.jpg"
+import UserLogin from './user/UserLogin'
  
 //TEST CODE!
  const user = {
@@ -23,6 +24,7 @@ const NavBar = () => {
   //extract user from reducer
   const {state:{currentUser},dispatch} = useValue()
   return (
+    <>
     <AppBar>
         <Container maxWidth="lg">
           <Toolbar disableGutters>
@@ -55,7 +57,7 @@ const NavBar = () => {
               <Button
                 color="inherit"
                 startIcon={<Lock />}
-                onClick={() => dispatch({ type: 'UPDATE_USER',payload:user })}
+                onClick={() => dispatch({ type: 'OPEN_LOGIN' })}
               >
                 Login
               </Button>
@@ -65,6 +67,7 @@ const NavBar = () => {
           </Toolbar>
         </Container>
       </AppBar>
+      </>
   )
 }
 

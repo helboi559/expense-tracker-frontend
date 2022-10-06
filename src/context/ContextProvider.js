@@ -12,6 +12,10 @@ import reducer from './reducer';
 // contain all initil values for app
 const initialState = {
   currentUser: null,
+  openLogin:false,
+  loading:false,
+  alert:{open:false,severity:'info',message:''},
+  
   
 };
 
