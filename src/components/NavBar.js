@@ -12,14 +12,10 @@ import {
  import { Lock, Menu } from '@mui/icons-material'
 import { useValue } from '../context/ContextProvider'
 import UserIcons from './user/UserIcons'
-import photoURL from "../rattle.jpg"
+
 import UserLogin from './user/UserLogin'
  
-//TEST CODE!
- const user = {
-   name:'test',
-   photoURL
- }
+
 const NavBar = () => {
   //extract user from reducer
   const {state:{currentUser},dispatch} = useValue()

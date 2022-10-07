@@ -10,9 +10,10 @@ import {
 import { Mail, Notifications } from '@mui/icons-material'; 
 import { useValue } from '../../context/ContextProvider';
 import UserMenu from './UserMenu';
+import useCheckToken from '../hooks/useCheckToken';
 
 const UserIcons = () => {
-//   useCheckToken();
+  useCheckToken()
   const {
     state: { currentUser },
   } = useValue();
