@@ -22,7 +22,7 @@ const UserMenu = ({ anchorUserMenu, setAnchorUserMenu }) => {
       method:'POST',
       headers:{
         "Content-Type":"application/json",
-        authorization:`Bearer ${currentUser.token}t`
+        authorization:`Bearer ${currentUser.token}`
       }
     })
     const resJSON = await response.json()

@@ -5,7 +5,7 @@ import React, { useState ,useRef, useEffect} from 'react'
 import { useValue } from '../../context/ContextProvider'
 import GoogleOneTapLogin from './GoogleOneTapLogin'
 import PasswordField from './PasswordField'
-
+import { login, register } from '../../actions/user'
 const UserLogin = () => {
     const {state:{openLogin},dispatch} = useValue()
     const [isRegister,setIsRegister] = useState(false)
@@ -19,28 +19,31 @@ const UserLogin = () => {
     const handleClose = () => {
         dispatch({type:"CLOSE_LOGIN"})
     }
+    //handle login/register
     const handleSubmit = (e) => {
         e.preventDefault()
-
-        //test loading
-        dispatch({type:"START_LOADING"})
-        setTimeout(()=> {
-            dispatch({type:"END_LOADING"})
-        },6000)
-
-        //test notification
+        const email = emailRef.current.value;
         const password = passwordRef.current.value;
-        const confirmPassword = confirmPasswordRef.current.value 
-        if(password !== confirmPassword) {
-            dispatch({
+        //if not on register modal send login req
+        if(!isRegister) {
+           return login({email,password},dispatch)
+        }
+        const name = nameRef.current.value;
+        const confirmPassword = confirmPasswordRef.current.value;
+        if (password !== confirmPassword) {
+
+            return dispatch({
                 type: 'UPDATE_ALERT',
                 payload: {
                 open: true,
                 severity: 'error',
                 message: 'Passwords do not match',
                 },
-            })
+            });
         }
+        //send post req
+        register({ name, email, password }, dispatch);
+
     }
     useEffect(() => {
     isRegister ? setTitle('Register') : setTitle('Login');
