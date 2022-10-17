@@ -1,20 +1,22 @@
 import fetchData from './utils/fetchData';
-// import { v4 as uuidv4 } from 'uuid';
-// import uploadFile from '../firebase/uploadFile';
+
+
+//USER ACTIONS
 
 const url = process.env.REACT_APP_SERVER_URL + '/user';
 
 export const register = async (user, dispatch) => {
+  //show loading screen
   dispatch({ type: 'START_LOADING' });
 
   const result = await fetchData(
     { url: url + '/register', body: user },
     dispatch
   );
-
+  //if data is saved in backend
   if (result) {
     //update user
-    console.log(result)
+    console.log("register()result",result)
     dispatch({ type: 'UPDATE_USER', payload: result });
     dispatch({ type: 'CLOSE_LOGIN' });
     //notify user of success registration
@@ -41,8 +43,8 @@ export const login = async (user, dispatch) => {
   );
 
   if (result) {
-    //update user
-    console.log(result)
+    
+    // console.log(result)
     dispatch({ type: 'UPDATE_USER', payload: result });
     dispatch({ type: 'CLOSE_LOGIN' });
     //notify user of success registration
@@ -51,21 +53,14 @@ export const login = async (user, dispatch) => {
   dispatch({ type: 'END_LOADING' });
 };
 
-//update user
+//update user details (name etc..)
 export const updateProfile = async (currentUser, updatedFields, dispatch) => {
   dispatch({ type: 'START_LOADING' });
   //extract name/file from fields
   const { name, file } = updatedFields;
   let body = { name };
   try {
-    // if (file) {
-    //   const imageName = uuidv4() + '.' + file?.name?.split('.')?.pop();
-    //   const photoURL = await uploadFile(
-    //     file,
-    //     `profile/${currentUser?.id}/${imageName}`
-    //   );
-    //   body = { ...body, photoURL };
-    // }
+   
     const result = await fetchData(
       {
         url: url + '/updateProfile',
@@ -99,8 +94,14 @@ export const updateProfile = async (currentUser, updatedFields, dispatch) => {
         message: error.message,
       },
     });
-    console.log(error);
+    console.log("updateProfile()error",error);
   }
 
   dispatch({ type: 'END_LOADING' });
 };
+
+//on logout
+export const logout = (dispatch) => {
+  dispatch({type:'UPDATE_USER',payload:null})
+  dispatch({type:'RESET_DRIVE'});
+}

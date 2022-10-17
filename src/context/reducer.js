@@ -15,6 +15,22 @@ const reducer = (state, action) => {
       return { ...state, alert: action.payload };
     case 'UPDATE_PROFILE':
       return { ...state, profile: action.payload };
+    case 'UPDATE_DETAILS':
+      return { ...state, details: { ...state.details, ...action.payload } };
+    case 'UPDATE_ROUTE':
+      return { ...state, route: action.payload };
+    case 'RESET_DRIVE':
+      return { ...state, details:{date:'',parking:0,tolls:0},route:{origin:'',destination:'',mileage:0},updatedDrive:null };
+    case 'UPDATE_DRIVE':
+      return { ...state, drive:action.payload };
+    case 'UPDATE_DRIVES':
+      return { ...state, drives:action.payload };
+    case 'UPDATE_SECTION':
+      return { ...state, section:action.payload };
+    case 'UPDATE_UPDATED_DRIVE':
+      return { ...state, updatedDrive:action.payload };
+    case 'DELETE_DRIVE':
+      return { ...state, drives:state.drives.filter(drive=>drive._id !== action.payload) };
     default:
       throw new Error('No matched action!');
   }

@@ -1,19 +1,21 @@
-import React from 'react'
-import NavBar from './components/NavBar'
-import Notification from './components/Notification'
-import UserLogin from './components/user/UserLogin'
-import Loading from "./components/Loading"
-import BottomNav from './components/BottomNav'
+import React from "react"
+import { BrowserRouter, Route, Routes } from "react-router-dom"
+import Home from "./pages/Home"
+import UserDashboard from "./pages/dashboard/UserDashboard"
+
 const App = () => {
   return (
     <>
-    <Loading/>
-    <UserLogin/>
-    <NavBar/>
-    <Notification/>
-    <BottomNav/>
+    <BrowserRouter>
+      <Routes>
+        <Route path="dashboard/*" element={<UserDashboard/>}/>
+        <Route path="*" element={<Home/>}/>
+      </Routes>
+    
+    </BrowserRouter>
     </>
   )
 }
 
 export default App
+

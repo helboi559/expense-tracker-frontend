@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 
 import jwtDecode from 'jwt-decode';
 import { useValue } from '../../context/ContextProvider';
-// import { storeRoom } from '../actions/room';
 // import { logout } from '../actions/user';
 
 //checks if token expires and logs out user automatically

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { 
     AppBar,
     Container,
@@ -14,11 +14,12 @@ import { useValue } from '../context/ContextProvider'
 import UserIcons from './user/UserIcons'
 
 import UserLogin from './user/UserLogin'
- 
+import SideBar from "./SideBar" 
 
 const NavBar = () => {
   //extract user from reducer
   const {state:{currentUser},dispatch} = useValue()
+  const [isOpen, setIsOpen] = useState(false);
   return (
     <>
     <AppBar>
@@ -28,7 +29,9 @@ const NavBar = () => {
               <IconButton
                 size="large"
                 color="inherit"
+                onClick={()=> setIsOpen(true)}
               >
+                
                 <Menu />
               </IconButton>
             </Box>
@@ -38,7 +41,7 @@ const NavBar = () => {
               noWrap
               sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}
             >
-              You Are Welcome
+              Mileage Expense Tracker
             </Typography>
             <Typography
               variant="h6"
@@ -46,7 +49,7 @@ const NavBar = () => {
               noWrap
               sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}
             >
-              YRW
+              Mileage Expense Tracker
             </Typography>
             
             {!currentUser ? (
@@ -64,6 +67,7 @@ const NavBar = () => {
         </Container>
       </AppBar>
       <Toolbar/>
+      <SideBar {...{isOpen,setIsOpen}}/>
       </>
   )
 }

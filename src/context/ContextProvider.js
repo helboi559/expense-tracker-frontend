@@ -1,10 +1,10 @@
+import dayjs from 'dayjs';
 import React from 'react'
 import {
   createContext,
   useContext,
   useEffect,
   useReducer,
-  useRef,
 } from 'react';
 import reducer from './reducer';
 
@@ -15,8 +15,13 @@ const initialState = {
   openLogin:false,
   loading:false,
   alert:{open:false,severity:'info',message:''},
-  profile:{open:false, file:null , photoURL:''}
-  
+  profile:{open:false, file:null , photoURL:''},
+  route:{origin:'',destination:'',mileage:0},
+  details:{date:dayjs(),parking:0, tolls:0},
+  drives:[],
+  drive:null,
+  section:0,
+  updatedDrive:null
 };
 
 const Context = createContext(initialState)

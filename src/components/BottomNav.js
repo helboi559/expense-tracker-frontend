@@ -1,40 +1,56 @@
 import { AddRoadOutlined, ManageHistoryRounded } from '@mui/icons-material'
 import { BottomNavigation, BottomNavigationAction, Box, Paper } from '@mui/material'
-
-import React, { useState } from 'react'
+import DashboardIcon from '@mui/icons-material/Dashboard';
+import React, { useState,useRef,useEffect } from 'react'
 import UserDrives from './drives/UserDrives'
-import Dashboard from './map/Dashboard'
+// import Dashboard from './dashboard/Dashboard'
+import AddDrive from './addDrive/AddDrive';
+import Protected from './protected/Protected';
+import Dashboard from './dashboard/Dashboard';
+import { useValue } from '../context/ContextProvider';
 
 const BottomNav = () => {
-    const [value,setValue] = useState(0)
+    
+    const {state:{section},dispatch} = useValue()
+    const ref = useRef();
+    useEffect(() => {
+        ref.current.ownerDocument.body.scrollTop = 0;
+    }, [section]);
     return (
     <Box
-    // sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}
+    // sx={{height:300 }}
+    ref={ref}
     >   
     
         {
             {
-            0: <Dashboard/>,
-            1: <UserDrives />,
-            
-            }[value]
+
+            0: <Protected><Dashboard/></Protected>,
+            1: <Protected><UserDrives/></Protected>,
+            2: <Protected><AddDrive /></Protected>,
+            }[section]
         }
         {/* switch statement above */}
-        <Paper
+         <Paper
         elevation={3}
-        sx={{position:"fixed", bottom:0,left:0,right:0,zIndex:2}}
+        sx={{position:"fixed", bottom:0,left:0,right:0,zIndex:1}}
         >
             <BottomNavigation
             showLabels
-            value={value}
-            onChange={(e,newValue)=> setValue(newValue) }
+            value={section}
+            onChange={(e,newValue)=> dispatch({type:'UPDATE_SECTION',payload:newValue}) }
             >
-                <BottomNavigationAction label="Add" icon={<AddRoadOutlined/>}/>
+                <BottomNavigationAction label="Dashboard" icon={<DashboardIcon/>}/>
                 <BottomNavigationAction label="Drive History" icon={<ManageHistoryRounded/>}/>
+                <BottomNavigationAction label="Add Drive" icon={<AddRoadOutlined/>}/>
             </BottomNavigation>
         </Paper>
     </Box>
   )
 }
 
+
+
 export default BottomNav
+
+

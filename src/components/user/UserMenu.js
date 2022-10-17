@@ -5,6 +5,7 @@ import { ListItemIcon, Menu, MenuItem } from '@mui/material';
 import { useValue } from '../../context/ContextProvider';
 import useCheckToken from '../hooks/useCheckToken';
 import Profile from './Profile';
+import { logout } from '../../actions/user';
 
 
 const UserMenu = ({ anchorUserMenu, setAnchorUserMenu }) => {
@@ -13,8 +14,10 @@ const UserMenu = ({ anchorUserMenu, setAnchorUserMenu }) => {
   const handleCloseUserMenu = () => {
     setAnchorUserMenu(null);
   };
-
-  //test for auth to backend
+  const handleLogout = () => {
+    logout(dispatch);
+  };
+  
   
   return (
       <>
@@ -30,14 +33,7 @@ const UserMenu = ({ anchorUserMenu, setAnchorUserMenu }) => {
             </ListItemIcon>
             Profile
           </MenuItem>
-    
-        <MenuItem onClick={() => dispatch({type:'UPDATE_USER',payload:null})}>
-          <ListItemIcon>
-            <Dashboard fontSize="small" />
-          </ListItemIcon>
-          Dashboard
-        </MenuItem>
-        <MenuItem >
+        <MenuItem onClick={handleLogout}>
           <ListItemIcon>
             <Logout fontSize="small" />
           </ListItemIcon>

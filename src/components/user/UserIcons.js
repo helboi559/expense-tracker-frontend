@@ -5,9 +5,8 @@ import {
     Avatar,
     IconButton,
     Tooltip,
-    Badge
  } from '@mui/material';
-import { Mail, Notifications } from '@mui/icons-material'; 
+
 import { useValue } from '../../context/ContextProvider';
 import UserMenu from './UserMenu';
 import useCheckToken from '../hooks/useCheckToken';
@@ -23,16 +22,6 @@ const UserIcons = () => {
   //test
   return (
     <Box>
-      <IconButton size="large" color="inherit">
-        <Badge color="error" badgeContent={5}>
-          <Mail />
-        </Badge>
-      </IconButton>
-      <IconButton size="large" color="inherit">
-        <Badge color="error" badgeContent={20}>
-          <Notifications />
-        </Badge>
-      </IconButton>
       <Tooltip title="Open User Settings">
         <IconButton onClick={(e) => setAnchorUserMenu(e.currentTarget)}>
             
