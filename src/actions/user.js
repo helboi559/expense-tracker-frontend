@@ -104,4 +104,5 @@ export const updateProfile = async (currentUser, updatedFields, dispatch) => {
 export const logout = (dispatch) => {
   dispatch({type:'UPDATE_USER',payload:null})
   dispatch({type:'RESET_DRIVE'});
+  dispatch({type:'CLEAR_DRIVES'});
 }

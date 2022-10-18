@@ -6,17 +6,10 @@ import {
   Stack,
   TextField,
 } from '@mui/material';
-// import { useState } from 'react';
 import { useValue } from '../../../context/ContextProvider';
 import AddCalendar from './AddCalendar';
-// import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns'
-// import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
-// import dayjs from 'dayjs';
-// import { Route } from '@mui/icons-material';
-// import moment from "moment"
-// import Calendar from 'react-calendar/dist/umd/Calendar';
-// import InfoField from './InfoField';
+
 
 const AddDetails = () => {
   const {
@@ -53,7 +46,7 @@ const AddDetails = () => {
               value={date}
               onChange={(newDate) => {
                   // setValue(newValue)
-                  console.log("newDate",newDate)
+                  // console.log("newDate",newDate)
                   dispatch({ type: 'UPDATE_DETAILS', payload: { date: newDate } })
                   // setSelectedDate(newValue)
               }}

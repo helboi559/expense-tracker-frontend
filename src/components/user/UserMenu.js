@@ -1,6 +1,6 @@
 import React from 'react';
-import { useState } from 'react';
-import { Dashboard, Logout, Settings } from '@mui/icons-material';
+// import { useState } from 'react';
+import { Logout, Settings } from '@mui/icons-material';
 import { ListItemIcon, Menu, MenuItem } from '@mui/material';
 import { useValue } from '../../context/ContextProvider';
 import useCheckToken from '../hooks/useCheckToken';

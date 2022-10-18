@@ -1,4 +1,4 @@
-import { Box, Paper} from '@mui/material';
+import { Box, Paper, Typography} from '@mui/material';
 import { 
     GoogleMap,
     useJsApiLoader,
@@ -11,8 +11,8 @@ import { useValue } from '../../../context/ContextProvider';
 
 
 const containerStyle = {
-width: '400px',
-height: '400px'
+width: '350px',
+height: '350px'
 };
 
 const center = {
@@ -22,7 +22,6 @@ const center = {
 const AddRoute = ({search,setSearch}) => {
     const {
         state: {route},
-        currentUser,
         dispatch,
     } = useValue();
     const [ libraries ] = useState(['places']);
@@ -88,18 +87,18 @@ const AddRoute = ({search,setSearch}) => {
   return isLoaded?(
     <Box
       sx={{
-        height: 450,
+        height: 400,
         position: 'relative',
         gridTemplateColumns: 'repeat(2,1fr)',
         gridAutoRows: 'minmax(50px, auto)',
         display: { xs: 'flex', md: 'grid' },
         textAlign: 'center',
-        gap: 2,
-        flexDirection: 'column',
+        gap: 1,
+        // flexDirection: 'row',
       }}
     >
       <Paper
-      elevation={3} sx={{ p: 3 }}
+      elevation={3} sx={{ p: 4 }}
       >
         <GoogleMap
         mapContainerStyle={containerStyle}
@@ -118,20 +117,47 @@ const AddRoute = ({search,setSearch}) => {
        
       </Paper>
       <Paper
-      elevation={4} sx={{ p: 3 }}
+      elevation={4} sx={{ p: 3}}
       >
-        <Autocomplete>
-            <input type="text"  defaultValue={route?.origin} ref={originRef} />
-            
-          </Autocomplete>
-          <Autocomplete>
+        <Box>
+          <Typography variant="h6">Origin</Typography>
+           <Autocomplete>
+              <input type="text" placeholder="origin" defaultValue={route?.origin} ref={originRef} />
+            </Autocomplete>
+        </Box>
+        <Box>
+          <Typography variant="h6">Destination</Typography>
+            <Autocomplete>
             <input type="text" defaultValue={route?.destination} placeholder="destination" ref={destinationRef}/>
           </Autocomplete>
-        
-          <button onClick={calculateRoute}>Route</button><br />
-          <button onClick={clearRoute}>clear</button><br />
-          <span>distance {distance}</span>
-          <span>/duration {duration}</span><br />
+        </Box>
+         
+        <Box
+          sx={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent:'center',
+            p:2
+          }}
+        >
+          <button onClick={calculateRoute}>Route</button>
+          
+        </Box>
+        <Box
+        sx={{
+            display: 'flex',
+            alignItems: 'center',
+            flexDirection:'column',
+            justifyContent:'center',
+            p:1
+          }}
+        >
+          <span>Distance: {distance}</span>
+          <span>Duration: {duration}</span>
+        </Box>
+        <Box>
+          <button onClick={clearRoute}>Clear Route</button>
+        </Box>
       </Paper>
 
     </Box>
@@ -139,4 +165,6 @@ const AddRoute = ({search,setSearch}) => {
 };
 
 export default AddRoute;
+
+
 

@@ -1,5 +1,5 @@
 import { Box, IconButton, Tooltip } from '@mui/material';
-import { Delete, Edit, Preview } from '@mui/icons-material';
+import { Delete, Edit,} from '@mui/icons-material';
 import { useValue } from '../../../context/ContextProvider';
 import { clearDrive, deleteDrive } from '../../../actions/drive';
 
@@ -7,10 +7,10 @@ const DrivesActions = ({ params, rowId, setRowId }) => {
   const { _id, origin, destination, tolls, parking, date, uid } = params.row;
   const {
     dispatch,
-    state: { currentUser, updatedRoom, }
+    state: { currentUser, }
   } = useValue();
 
-//   const navigate = useNavigate();
+  // update route 
   const handleEdit = () => {
     clearDrive(dispatch)
     dispatch({ type: 'UPDATE_ROUTE', payload: { origin, destination } });
@@ -18,10 +18,9 @@ const DrivesActions = ({ params, rowId, setRowId }) => {
       type: 'UPDATE_DETAILS',
       payload: { date, parking, tolls },
     });
-    // dispatch({ type: 'UPDATE_IMAGES', payload: images });
+    
     dispatch({ type: 'UPDATE_UPDATED_DRIVE', payload: { _id, uid } });
     dispatch({ type: 'UPDATE_SECTION', payload: 2 });
-    // navigate('/');
   };
 
   return (

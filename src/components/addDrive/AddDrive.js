@@ -55,7 +55,8 @@ const AddDrive = () => {
   };
   //watch for details to mark complete
   useEffect(() => {
-    if (details.parking >= 0 ) {
+    // if calendar input has a date, check details as complete 
+    if (details.date) {
       if (!steps[1].completed) setComplete(1, true);
     } else {
       if (steps[1].completed) setComplete(1, false);
@@ -91,15 +92,15 @@ const AddDrive = () => {
     
     //convert km to miles
     const converted = Math.round((route.mileage/1609)*10)/10
-    console.log("converted",converted)
+    // console.log("converted",converted)
     //calculate reimbursement
     const businessTaxRate = .625
     const reimbursement = Math.round(((converted) * businessTaxRate ) * 10 ) /10
-    console.log("reimbursement",reimbursement)
+    // console.log("reimbursement",reimbursement)
     //calculate total
     const parking = Number(details.parking)
     const tolls = Number(details.tolls)
-    console.log("parking",parking)
+    // console.log("parking",parking)
     const total = Math.round(Number(reimbursement + parking + tolls) * 10) /10
     const drive = {
       origin: route.origin,
@@ -132,7 +133,7 @@ const AddDrive = () => {
     }
   };
   return (
-    <Container sx={{ my: 4 }}>
+    <Container sx={{ my: 3 }}>
       <Stepper
         alternativeLabel
         nonLinear

@@ -25,6 +25,8 @@ const reducer = (state, action) => {
       return { ...state, drive:action.payload };
     case 'UPDATE_DRIVES':
       return { ...state, drives:action.payload };
+    case 'CLEAR_DRIVES':
+      return { ...state, drives:[]};
     case 'UPDATE_SECTION':
       return { ...state, section:action.payload };
     case 'UPDATE_UPDATED_DRIVE':

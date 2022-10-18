@@ -23,7 +23,7 @@ const NavBar = () => {
   return (
     <>
     <AppBar>
-        <Container maxWidth="lg">
+        <Container maxWidth="xl">
           <Toolbar disableGutters>
             <Box sx={{ mr: 1 }}>
               <IconButton

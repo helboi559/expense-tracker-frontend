@@ -14,6 +14,7 @@ import { useValue } from '../../context/ContextProvider'
 import { useRef } from 'react';
 import { updateProfile } from '../../actions/user';
 
+
 const Profile = () => {
     const {state:{profile,currentUser},dispatch} = useValue()
     const nameRef = useRef();
@@ -53,7 +54,9 @@ const Profile = () => {
               top:8,
               right:8,
               color:(theme)=> theme.palette.grey[500]
+                
             }}
+            
             onClick={handleClose}
             >
                 <Close/>

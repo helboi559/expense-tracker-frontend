@@ -9,7 +9,7 @@ import {
 import reducer from './reducer';
 
 
-// contain all initil values for app
+// contain all initial values for app
 const initialState = {
   currentUser: null,
   openLogin:false,

@@ -1,4 +1,4 @@
-import { Box, Button, Typography } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 import React, { useEffect ,useMemo, useState} from 'react'
 import { useValue } from '../../context/ContextProvider'
 import { DataGrid , GridToolbarContainer, GridToolbarExport} from '@mui/x-data-grid';
@@ -8,7 +8,7 @@ import DrivesActions from './actions/DrivesActions';
 import { fetchUserDrives } from '../../actions/drive';
 
 
-
+//export toolbar
 function CustomToolbar() {
   return (
     <GridToolbarContainer>
@@ -28,45 +28,32 @@ const UserDrives = () => {
       {
         field: 'origin',
         headerName: 'Origin',
-        width: 150,
-        editable:true,
-        sortable: false,
-        filterable: false,
+        width: 200,
       },
-      { field: 'destination', headerName: 'Destination', width: 150 ,},
-      { field: 'parking', headerName: 'Parking', width: 75 },
+      { field: 'destination', headerName: 'Destination', width: 200 ,},
+      { field: 'parking', headerName: 'Parking', width: 65 },
       {
         field: 'tolls',
         headerName: 'Tolls',
         width: 50,
-        // type: 'boolean',
-        // editable: currentUser?.role === 'admin',
       },
       {
         field: 'reimbursement',
         headerName: 'Reimbursement',
         width: 75,
-        // type: 'singleSelect',
-        // valueOptions: ['basic', 'editor', 'admin'],
-        // editable: currentUser?.role === 'admin',
       },
       {
         field: 'total',
         headerName: 'Total',
         width: 75,
-        // type: 'singleSelect',
-        // valueOptions: ['basic', 'editor', 'admin'],
-        // editable: currentUser?.role === 'admin',
       },
-      {
+       {
         field: 'date',
         headerName: 'Date',
         width: 100,
         renderCell: (params) =>
           moment(params.row.date).format('YYYY-MM-DD'),
       },
-      { field: '_id', headerName: 'Id', width: 100},
-      
       {
         field: 'actions',
         headerName: 'Actions',
@@ -75,6 +62,9 @@ const UserDrives = () => {
           <DrivesActions {...{ params , rowId , setRowId}} />
         ),
       },
+     
+      { field: '_id', headerName: 'Id', width: 75},
+      
     ],
     [rowId]
   )
