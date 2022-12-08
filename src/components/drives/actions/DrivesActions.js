@@ -22,6 +22,9 @@ const DrivesActions = ({ params, rowId, setRowId }) => {
     dispatch({ type: 'UPDATE_UPDATED_DRIVE', payload: { _id, uid } });
     dispatch({ type: 'UPDATE_SECTION', payload: 2 });
   };
+  console.log("params.row",params.row)
+  console.log("rowId",rowId)
+  console.log("uid",uid)
 
   return (
     <Box>
