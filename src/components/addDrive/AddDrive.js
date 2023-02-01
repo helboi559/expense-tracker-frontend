@@ -159,13 +159,15 @@ const AddDrive = () => {
 
         <Stack direction="row" sx={{ pt: 2, justifyContent: 'space-around' }}>
           <Button
-            color="inherit"
+            // color="inherit"
+            variant='contained'
+            color="secondary"
             disabled={!activeStep}
             onClick={() => setActiveStep((activeStep) => activeStep - 1)}
           >
             Back
           </Button>
-          <Button disabled={checkDisabled()} onClick={handleNext}>
+          <Button color="secondary" variant="contained" disabled={checkDisabled()} onClick={handleNext}>
             Next
           </Button>
         </Stack>
@@ -184,7 +186,8 @@ const AddDrive = () => {
             </Button>
           )}
           <Button
-            variant="outlined"
+            variant="contained"
+            color='secondary'
             endIcon={<Cancel />}
             onClick={handleCancel}
           >
