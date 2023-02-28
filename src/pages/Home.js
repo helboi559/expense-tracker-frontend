@@ -4,14 +4,28 @@ import Notification from '../components/Notification'
 import UserLogin from '../components/user/UserLogin'
 import Loading from "../components/Loading"
 import BottomNav from '../components/BottomNav'
+import { useMediaQuery } from '@mui/material'
 const Home = () => {
+  const isMobile = useMediaQuery('(max-width:600px)')
   return (
     <>
-    <Loading/>
-    <UserLogin/>
-    <NavBar/>
-    <Notification/>
-    <BottomNav/>
+    {isMobile ? (
+      <>
+        <Loading/>
+        <UserLogin/>
+        <NavBar/>
+        <Notification/>
+        <BottomNav/>
+      </>
+    ):(
+      <>
+        <Loading/>
+        <UserLogin/>
+        <NavBar/>
+        <Notification/>
+      </>
+    )}
+  
     </>
   )
 }

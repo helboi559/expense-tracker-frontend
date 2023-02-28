@@ -31,6 +31,7 @@ export const useValue = () => {
 };
 const ContextProvider = ({children}) => {
     const [state,dispatch] = useReducer(reducer,initialState)
+    console.log("section",state.section)
     useEffect(()=> {
       const currentUser = JSON.parse(localStorage.getItem('currentUser'))
       if(currentUser) {
