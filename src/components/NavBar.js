@@ -68,6 +68,7 @@ const NavBar = () => {
       </AppBar>
       <Toolbar/>
       <SideBar {...{isOpen,setIsOpen}}/>
+      
       </>
   )
 }

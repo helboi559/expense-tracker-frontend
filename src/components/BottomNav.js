@@ -18,7 +18,7 @@ const BottomNav = () => {
     }, [section]);
     return (
     <Box
-    // sx={{height:300 }}
+    // sx={{height:300 }
     ref={ref}
     >   
     
@@ -33,7 +33,9 @@ const BottomNav = () => {
         {/* switch statement above */}
          <Paper
         elevation={3}
-        sx={{position:"fixed", bottom:0,left:0,right:0,zIndex:1}}
+        sx={{position:"fixed", bottom:0,left:0,right:0,zIndex:1,
+         display: { xs: 'block', sm: 'none', md: 'none' }}}
+        
         >
             <BottomNavigation
             showLabels
