@@ -1,14 +1,10 @@
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
 import { Box, Divider, Drawer, IconButton, List, ListItem, ListItemButton, ListItemIcon, ListItemText, Paper, styled, Toolbar, Typography } from '@mui/material';
 import { ChevronLeftOutlined } from '@mui/icons-material';
 import { useValue } from '../context/ContextProvider';
 import GridViewIcon from '@mui/icons-material/GridView';
 import HistoryIcon from '@mui/icons-material/History';
 import AddLocationAltIcon from '@mui/icons-material/AddLocationAlt';
-// import Dashboard from './dashboard/Dashboard';
-// import UserDrives from './drives/UserDrives';
-// import AddDrive from './addDrive/AddDrive';
-// import Protected from './protected/Protected';
 const DrawerHeader = styled('div')(({ theme }) => ({
   width:130,
   display: 'flex',
@@ -25,7 +21,6 @@ const SideBar = ({isOpen,setIsOpen}) => {
     return (
     <Box 
     sx={{ display: 'flex' }}
-    // ref={ref}
     onClick={()=> setIsOpen(false)}
     >
       

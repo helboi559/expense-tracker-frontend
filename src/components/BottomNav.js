@@ -3,7 +3,6 @@ import { BottomNavigation, BottomNavigationAction, Box, Paper } from '@mui/mater
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import React, { useState,useRef,useEffect } from 'react'
 import UserDrives from './drives/UserDrives'
-// import Dashboard from './dashboard/Dashboard'
 import AddDrive from './addDrive/AddDrive';
 import Protected from './protected/Protected';
 import Dashboard from './dashboard/Dashboard';
@@ -18,7 +17,6 @@ const BottomNav = () => {
     }, [section]);
     return (
     <Box
-    // sx={{height:300 }
     ref={ref}
     >   
     
